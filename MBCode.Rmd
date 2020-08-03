@@ -1,0 +1,639 @@
+---
+title: Man Booker Palimpsest Code
+output: html_notebook
+css: "MBFormat.css"
+author: Nathaniel LaCelle-Peterson
+---
+All code is sourced from Andrew Piper's github directory (https://github.com/piperandrew/handbook) which accompanies his *Fish and the Painting* guide (https://r4thehumanities.home.blog/) that provides a step-by-step guide to the logic of this code and its implementation.   
+
+
+
+
+## Start up code
+
+This code loads the required libraries, and sets the working directory (my working directory is in this case the folder "booker-global-novel"):
+```{r}
+library("tm")
+
+library("textstem")
+
+library("slam")
+
+library("proxy")
+
+library("stats")
+
+library("topicmodels")
+
+library("knitr")
+
+setwd("NLP/Documents/GitHub/booker-global-novel")
+
+```
+
+
+## Preparing and Chunking the Text, Creating a Document-Term Matrix
+
+To begin, we import the corpus, which I have saved as plain text files converted from ebooks (this is a very simple process using ebook library software; I used an open source ebook library platform called Calibre).
+
+This code imports a list of the novels in directory "booker_novels:"
+```{r}
+f.names<-list.files(path="booker_novels")
+
+```
+
+This code defines a function, text.prep, which cleans the files of irrelevant formatting and non-semantic characters (page numbers, chapter numbers, etc.). 
+
+Like the rest of this code, I am implementing it from Andrew Piper's topic modeling Github depository. Piper's code cannot remove dashes from compound words and split them into to separate words because of how it scans the document, which is a problem for the formatting of many of these texts where dashes are used playfully (*Midnight's Children*). I have, for this run, gone through manually and used find/replace to find each dash (all sizes) in the original .txt files. 
+```{r}
+text.prep<-function(x){
+  
+  #first scan in the document
+
+  work<-scan(x, what="character", quote="", quiet=T)
+
+  #remove numbers
+
+  work<-gsub("\\d", "", work)
+  
+  #remove punctuation
+  
+  work<-gsub("\\W", "", work)
+
+  #make all lowercase
+
+  work<-tolower(work)
+
+  #remove blanks
+
+  work<-work[work != ""]
+  
+}
+```
+
+
+The text of each novel needs to be imported into R and broken into "chunks." Chunks are used for topic modeling on larger documents, as "topic modeling looks at the likelihood of co-occurrence of words within the same “space,” where space is defined as the boundaries of a given document" (The Fish and the Painting). As critical perspectives rightly emphasize, this "bag of words" approach means that the order and syntax of words is not a factor in the generation of topics. Chunks are essentially a way of using smaller bags of words than the whole novel, looking for more local co-occurance. In his model of 150 novels, Piper sets the chunk size to 1000 words; I have chosen to use 500 as I am using topics as a way to select passages to read. However this variable is something which could be experimented with.
+
+In this code, the chunk size is set to 500. Then, a loop works through each novel file, running the text prep function defined above and forming new .txt files with 500 words each, which are then saved to the directory "booker_novels_chunks_500". After this code runs, there are 2158 files in the booker_novels_chunks_500 directory, with names that point back to their original novel.
+```{r}
+chunk<-500
+
+for (i in 1:length(f.names)){
+
+  #set your working directory inside of your novels
+
+  setwd("NLP/Documents/GitHub/booker-global-novel/booker_novels")
+
+  #ingest and clean each text using the text.prep function
+
+  work.v<-text.prep(f.names[i])
+
+  #set your working directory to a new folder for the chunks
+
+  setwd("NLP/Documents/GitHub/booker-global-novel/booker_novels_chunks_500")
+
+  #set file number integer
+
+  n=0
+
+  #go through entire novel and divide into equal sized chunks
+
+  for (j in seq(from=1, to=length(work.v)-chunk, by=chunk)){
+
+            n=n+1
+
+            sub<-work.v[j:(j+(chunk-1))]
+
+            #collapse into a single paragraph
+
+            sub<-paste(sub, collapse = " ")
+
+            #write to a separate directory using a custom file name
+
+            new.name<-gsub(".txt", "", f.names[i])
+
+            new.name<-paste(new.name, sprintf("%03d", n), sep="_")
+
+            new.name<-paste(new.name, ".txt", sep="")
+
+            write(sub, file=new.name)
+
+            }
+
+  }
+```
+
+
+The "bag of words" topic model generates topics by from the frequency of words in documents (chunks). To finish preparing the data for topic-modeling, these frequencies must be calculated in a document-term matrix, which contains the word frequencies for each document (chunk). 
+
+This code ingests the corpus cleaned during chunking, and then creates a document-term matrix on that corpus: 
+```{r}
+setwd("NLP/Documents/GitHub/booker-global-novel")
+
+booker-global-novel <- VCorpus(DirSource("booker_novels_chunks_500", encoding =
+                               
+            "UTF-8"), readerControl=list(language="English"))
+
+booker-global-novel.dtm<-DocumentTermMatrix(booker-global-novel, control=list(wordLengths=c(1,Inf))) 
+ 
+``` 
+
+
+
+## Zipf's Law: Stopwords, Proper Names, and the Long Tail 
+
+Zipf's Law states that "the most-used word in a string of sufficient length will be used twice as much as the next most common word, three times as often as the next most, and so on" (Weatherby 897). Practically, this means that the most frequent words - stopwords and proper names - are strongly present in all documents, and that many of the least frequent words in the corpus appear just once. Both extremes present problems for topic modeling (in technical terms, this is a problem of high-dimensionality) by "drowning out" the words whose association and distribution the topic model seeks to identify.  
+
+This process of dimensionality reduction is one of the more controversial aspects of topic modeling, as technical means to eliminate these words are inherently arbitrary. It might be obvious that the most common word (usually, in English texts, "the") and the least common (one of which in this corpus is "трусики," appearing just once in Paul Beatty's *The Sellout*) are safe to ignore in a general search of the corpus's distributional relationships, but part of the problem with topic modeling presented by Da is exactly in the confirmation bias available by the arbitrary setting of parameters for dimensionality reduction, and the fact that the only way to make the decision of "where to cut" is a) by following the models of others ("best practices" and "domain expertise") or b) cutting stopwords and rare words until the data seems to reveal something that is meaningful within the realm of expectation, which in other words means confirming the expectations, not testing them. 
+
+In this paper, I choose option a): after assessexamining the various ways to address this problem in Piper's guide as well as the implementation of LDA by Lee and Beckelhimer, I have removed the following:
+
+  * all stopwords included as a list in the R library "tm," to which I have appended some literary stopwords (said, one, will)
+  * all words under 3 characters
+  * roman numerals, which are usually paratextual chapter headings
+  * all words that do not appear in 10% or more of the documents (chunks)
+  * all character names in all of the novels
+
+Removing words that do not appear in at least 10% of texts is a way of removing the "long tail" of extremely rare words postulated by Zipf's law. Other options for removing the "long tail" include arbitrary cut offs (only the top 4000 words, for example) -- by cutting words not in at least 10% of texts, the model is sensitive in its selection for words distributed or common across the corpus, and not concentrated in only a few documents.
+
+To remove the names, I manually read through the novels and built a spreadsheet of every major character name and nickname (this process was made possible by the editorial decision to include a list of character names at the beginning of Marlon James' *A Brief History of Seven Killings*.) The code below reads my list file "Names_combined.csv" and removes from the names from the document-term matrix with modified lines of Piper's code for stopword removal.
+```{r}
+setwd("NLP/Documents/GitHub/booker-global-novel/Dictionaries")
+
+names <- read.csv("Names_combined.csv", header=F, stringsAsFactors = F)
+
+dtm<-booker-global-novel.dtm[,which(!(colnames(booker-global-novel.dtm) %in% names$V1))]
+
+inspect(dtm)
+
+```
+
+This code removes the stopwords. I have modified Piper's code to "clean" the dictionary text of apostrophes, as many of the stopwords are contractions which caused some problems caught during test runs of the model.  
+```{r}
+stop<-stopwords("en")
+
+dtm.nostop<-dtm[ ,which(!colnames(dtm) %in% stop)]
+
+stop.prepped<-textclean::strip(stop, apostrophe.remove= TRUE)
+
+dtm.nostop<-dtm[ ,which(!colnames(dtm) %in% stop.prepped)]
+
+inspect(dtm.nostop)
+
+```
+
+This code is a means of probing the data, returning the 5 most and least common words (all the least common words appear only once, and there are certainly more than 5 words appearing only once.) Some of the top 5 ("said," "one") point to the need for further dimensionality reduction.
+```{r}
+sort(col_means(dtm.nostop), decreasing = T)[1:5]
+
+sort(col_means(dtm.nostop), decreasing = T)[(length(colnames(dtm.nostop))-4):length(colnames(dtm.nostop))]
+
+```
+
+This code removes all words under 3 characters and then prints the top 10 words, as well as the 7000th most common word in the corpus to give a quick look at the progress of dimensionality reduction:
+```{r}
+dtm.nostop<-dtm.nostop[, which(!nchar(colnames(dtm.nostop)) < 3)]
+
+top.words2<-sort(col_means(dtm.nostop), decreasing = T)
+
+top.words2[1:10]
+
+top.words2[7000]
+
+```
+
+This code creates a list of custom stopwords ("said" "one" "will") built from examining the 10 most common and Piper's list, and removes the "extra stopwords" as well as the long tail:
+```{r}
+stop.xtra<-c("said", "one", "will")
+
+stop.xtra<-append(stop.xtra, tolower(as.roman(1:1000)))
+
+dtm.nostop<-dtm.nostop[, which(!colnames(dtm.nostop) %in% stop.xtra)]
+
+dtm.sparse<-removeSparseTerms(dtm.nostop, 0.9)
+
+top.words2<-sort(col_means(dtm.nostop), decreasing = T)
+
+top.words2[1:10]
+
+top.words2[7000]
+
+```
+
+This code finishes cleaning the data after removing the long tail, and creates the matrix "corpus2" which will be the basis for the topic models:
+```{r}
+row_zero<-row_sums(dtm.sparse)
+
+length(which(row_zero == 0))
+
+corpus2<-as.matrix(dtm.sparse)
+
+```
+
+
+
+## Topic Model: Setting Parameters and Running the Model
+
+Another point of controversy for topic modeling as a method is in the contingency of the model on its parameters. As Piper asserts in his larger argument about computational methods, every generalization is founded on parameters; the visibility of the dependency of models on parameters is only new for literary study which tends to elide the contingency generalization. As Da and Weatherby would agree, in more clearly defined statistical science contexts, the theoretical basis for statistical generalization is empirically testable because of the static environment in which one tests; Weatherby's example of pop song analysis is particularly cogent: "Data prediction is surest, as any textbook will tell you, when its source is stationary... Sound waves, for example, can be datafied and then converted into pop-song analysis because they follow physical laws that are known to us and unchanging" (Weatherby 892). To have the same  basis for studying distributional semantics in literature, Weatherby argues one would need a complete account of the larger distributional semantics of culture (parallel to the relationship of sound waves to a song by Taylor Swift). 
+
+I cannot solve these conundra through Levin's model, and as the broader theoretical considerations raised by Da and Weatherby's dialog suggest, it is not possible to find technical solutions to the problem of domain. I discuss this theoretical knot in detail in the paper. Here, I set the parameters of the topic model along Piper's suggestions, and in consecutive runs of the model have explored some variation. However, as I discuss in the Topic Stability section, I have focused on running the same probabilistic model multiple times, and statistically assessing, in a "model of models," which topics are stable -- testing a  "model of models" is only possible by keeping static the parameters, and so the parameters of this model could be explored further.
+
+I define three parameters of the topic model:
+   * k: this is the number of topics the model will produce. Here, k is set to 20
+   * alpha: as Piper describes it, the alpha is a value whose varation produces "topics that are more unique to individual documents or... topics that are more well-distributed across the entire corpus. A low alpha will give you very distinct topics...  a high alpha will give you several topics that are associated in similar manner with a single document... 50/k is recommended for a high alpha, 0.001 for a low alpha" (Piper github). I have started with 50/k per the intended use of this topic model as a search function
+   * seed: as topic models are probabilistic, the seed is set for reproducibility. For the 20 runs of the topic model that I will be using, the seeds for each model correspond to their number (1-20). The model whose topics I use in my analysis is seed=1. 
+
+This code sets stores the parameters in the "control_LDA_Gibbs" variable: 
+```{r}
+k=20
+
+control_LDA_Gibbs<-list(alpha=(50/k), estimate.beta=TRUE, iter=1000, burnin=20, best=TRUE, seed=1)
+
+```
+Finally, here is the code that runs the model: 
+```{r}
+topicmodel<-LDA(corpus2, method="Gibbs", k=k, control = control_LDA_Gibbs)
+
+```
+
+
+
+## Model Inspection
+
+In this section I have included some of Piper's code that provides a look into the topics that have now been generated. These tools, while not the analytical basis of my argument, are a crucial means of testing that the model functions as expected.
+
+This code prints the top 20 words of each of the 20 topics (k=20).
+```{r}
+probabilities<-posterior(topicmodel)
+term_dis<-terms(topicmodel, 20)
+kable(term_dis[,1:10])
+kable(term_dis[,11:20])
+```
+
+The above table, while interesting for the distributional associations of words it suggests, does not reveal any quantitative information about the relationships between topics -- the order of the topics in this list is arbitrary, and even as the top 20 words are ordered, they are directly comparable from topic to topic.  If the interest of this study was on the semantic potential of the topics generated as such, more work could be done at this stage to "improve" the topics listed here (usually by adding words such as numbers or "also" to the list of removed stopwords.) For assessing which topic to use to search for sites of palimpsest repetition, I am more concerned with the quantitative soundness of the model, which is described by the next functions. 
+
+This code visualizes the connections between topics and documents (chunks), producing a chart "Topic Distribution" which graphs in how many chunks each topic is the most-represented topic:
+```{r}
+#top topic per chunk
+topic_dis_1<-topics(topicmodel, 1)
+
+#all topic probabilities per chunk
+top_dis_all<-topics(topicmodel, k)
+
+#table of doc to topic probabilities
+topic_doc_probs<-as.data.frame(probabilities$topics)
+
+#distribution check 
+#x-axis = topic number. y-axis = frequency of that topic as the "top topic" in a chunk
+plot(table(topic_dis_1), main="Topic Distribution", xlab="Topics", ylab="Frequency")
+
+```
+
+Here we see a fairly even distribution of topics. However as topics are probabilistic categories, just because a topic is the most present in a given document (chunk) does not mean that it is the only highly-present topic, and in fact it is possible that, in some cases, the second-most present topic in a given document is more present there than in other documents (chunks) where it is the top topic. This possibility can be demonstrated by examining individual chunks. 
+
+With this code, the distribution of topics for a given document (chunk 800) are visualized:
+```{r}
+#to inspect topics associated with a single document
+
+test.doc<-800
+
+prob_sample<-topic_doc_probs[test.doc,] #the integer here = the document you want to inspect
+
+#plot to identify which topic is highest and by how much
+#y-axis = probability (between 0 and 1)
+
+title.c<-paste("Probability of Topics in Document ", test.doc, sep="")
+
+plot(t(prob_sample), main=title.c, xlab="Topics", ylab="Probability")
+
+#plot in ranked order to observe distribution
+#warning: the topic numbers do not refer to the actual topic numbers here
+#they are just the ranked order (i.e. 20 is highest, not topic 20)
+
+title.d<-paste("Topic to Document Probabilities\nfor Document ", test.doc, sep="")
+
+prob_sample_sort<-sort(prob_sample)
+
+plot(t(prob_sample_sort), main = title.d, xlab="Topic Ranks", ylab="Probability")
+
+```
+
+Trying a few different chunks at random, it is clear in the first graph that there are different topics present, and that some chunks have relatively high probabilites for multiple chunks (chunk 800, for example, has relatively high scores for both topics 6 and 20). In the second graph, the topics are ordered from least to greatest probability. This diagnostic is useful for assessing individual chunks and generally showing that the model is functioning as expected -- other than that, the semantic information  is ambiguous and not of particular interest to this paper.
+
+
+
+## Individual Topic Inspection: Lexical Presence and "Coherence" 
+
+Piper proposes the following diagnostics for assessing the relationship of a topic of interest to the larger model. These methods are concerned with the following aspects: 
+
+   * Overall lexical presence: how many words (tokens) are represented by the top 20 words in the topic? Top 20 is an arbitrary choice, but comparing topics it's possible to make relative claims about the lexical strength of topics.
+   
+   * Document-threshold presence: how many documents is the topic "present" above an artificial threshold? Piper uses 2 standard deviations as the threshold -- compared to work above, this allows for the case that there would a topic where more than one topic is "strongly" present. However it is still an arbitrary threshold.
+   
+  * Coherence: defined by David Mimno et al, "coherence" is a means of internally scoring (not relying outside data or human evaluators) how well a topic coheres, defined by "co-document frequency over document frequency" -- which is to say how frequently the top 20 words in the topic appear together versus how frequently they appear alone. As Piper summarizes coherence in *Enumerations*: "The more topic words appear together in documents as opposed to in their own documents, the more 'coherent' the topic is thought to be (and the more it in theory correlates with expert opinion about the validity of the topics)" (Piper 77).
+
+In this study, I am treating Mimno's coherence as the most useful of these 3 diagnostics for understanding the topics as search tools within the constraint of the "bag of words" method: while in Lee and Beckelhimer's "Anthropocene and Empire," their text analysis includes "machine-learning techniques" that allow them "to identify both explicit and latent linguistic and semantic patterns," proceeding without these methods, my topic model is only built on the latent patterns of unordered association (Lee and Beckelhimer 113). Mimno's coherence score shows which topics have their most common words (top 20) most commonly together, which will allow for the identification of passages of lexical association where, upon close reading, "explicit" patterns -- the forms literary study is familiar with -- can be identified and compared. 
+
+This code is from Piper -- I have commented out some lines specific to his corpus: 
+```{r}
+library(splitstackshape)
+
+#establish probability threshold for topic association with a document
+#below this probability a topic will not be associated with a document
+#this takes a probability that is 2sd above the overall mean probability
+#the advantage is it allows multiple topics to be in a document
+#disadvantage is it is a single arbitrary score
+cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
+
+topic.df<-NULL
+for (i in 1:ncol(topic_doc_probs)){
+  #for every topic
+  topic.no<-i
+  #no. tokens
+  #takes the top 20 words and counts their overall frequency in the corpus
+  tok.sub<-corpus2[,which(colnames(corpus2) %in% as.character(term_dis[,topic.no]))]
+  no.tokens<-sum(tok.sub)
+  #no. documents
+  #counts the number of documents that exhibit a given topic above some artificial threshold (here 0.2)
+  doc.sub<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
+  doc.sub<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+  no.docs<-nrow(doc.sub)
+  if (no.docs > 5){
+    # #no. novels
+    # #counts how many novels the documents belong to
+    # #after fixiing the naming convention problem, this is clearly use case issue - presumably, all topics in all novels 
+    # #what I want is: what % of novel's documents is it in?
+    # nov.sub<-cSplit(doc.sub, "row.names.topic_doc_probs.", sep="_")
+    # no.novels<-nlevels(factor(nov.sub$row.names.topic_doc_probs._4))
+    # 
+    # #heterogeneity
+    # #finds the number of documents that belong to the single most dominant novel to see the extent to
+    # #which the topic is dominated by a single novel
+    # #higher = more heterogenous, less dominated by a single novel
+    # concentration<-max(table(factor(nov.sub$row.names.topic_doc_probs._4)))/nrow(nov.sub)
+    
+    #coherence
+    #see David Mimno's article -- measures co-document frequency relative to document frequency
+    #the more words appear together in documents (co-document frequency) versus in a single document (doc frequency)
+    #the more semantically coherent the topic
+    tdm<-t(corpus2)
+    tdm<-tdm[,colnames(tdm) %in% as.character(doc.sub$row.names.topic_doc_probs.)] #keep docs in the top topic list
+    tdm<-tdm[row.names(tdm) %in% as.character(term_dis[,topic.no]),] #keep only top 20 topic words
+    russel.dist<-as.matrix(simil(tdm, method = "Russel", convert_distances = TRUE))
+    russel.final<-russel.dist*ncol(tdm)
+    russel.final[is.na(russel.final)]<-0
+    coherence.total<-0
+    for (k in 1:nrow(tdm)) {
+      doc.freq<-length(which(tdm[k,] != 0))
+      vec1<-0
+      for (m in 1:nrow(russel.final)) {
+        if (russel.final[k,m] != 0){
+          co.doc.freq<-as.integer(russel.final[k,m])
+          coherence1<-log((co.doc.freq+1)/doc.freq)
+          vec1<-vec1 + coherence1
+        }
+      }
+      coherence.total<-coherence.total + vec1
+    }
+    #store in data frame
+    # temp.df<-data.frame(topic.no, no.tokens, no.docs, no.novels, concentration, coherence.total) # this is the original form from Piper
+    # here is my version, without no.novels or concentration scores
+    temp.df<-data.frame(topic.no, no.tokens, no.docs, coherence.total)
+
+    topic.df<-rbind(topic.df, temp.df)
+  }
+}
+
+kable(topic.df)
+
+```
+In this model (seed=1), topics 16, 17, and 18 happen to be the most coherent. Topics 3, 10, and 9 are found in the most chunks. Topics 11, 9, and 2 account for most tokens (words) in the model.  
+
+
+
+## Topic Stability
+
+In Lee and Beckelhimer's "Anthropocene and Empire", the topic model can function as a search tool by running many topic models and identifying stable clusters of topics by which to call documents. Running this model with different seeds, the similarity between topics on each run can be calculated -- this is Lee and Beckelhimer's "model of models." After constructing this model of models, a stable topic can be selected by which to search the corpus for implicated documents (chunks). 
+
+```{r}
+# naming convention: booker_novels_seed.csv
+
+topic_word_probs<-as.data.frame(probabilities$terms)
+
+write.csv(topic_word_probs, file= paste("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
+
+```
+
+Now, I am running the same topic model 20 times with different seeds (1-20). As topic models are probabilistic, variation between the topics in each model is to be expected; by statistically assessing which models are most closely associated with each other between each run, the "stability" of topics can be calculated and compared. Per Piper's documentation, the script "calculates the average distance between every topic in the model and the most similar topic from every other model," using a statistical measure of information loss called Kulback-Leibler divergence (KLD). The lower the KLD score, the less divergent the like topics are, as there is less information "lost" when the topic is approximated by the most similar topic from each of the other 19 models, and thus the more stable that topic is. 
+```{r}
+library(topicmodels)
+library(entropy)
+
+#load all models
+setwd("NLP/Documents/GitHub/booker-global-novel")
+filenames<-list.files("topicmodel_samples")
+setwd("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples")
+
+#load primary model
+#this is the model you plan to use
+#rows are words, columns are topics, values = probability of word being in topic
+twp<-read.csv("booker_novels_1.csv")
+#remove first column
+twp<-twp[,-1]
+#transpose columns and rows
+twp<-t(twp)
+#rename columns
+colnames(twp)<-seq(1,ncol(twp))
+
+#initialize output table
+stable.df<-NULL
+#run for every topic
+for (i in 1:ncol(twp)){
+  #subset by ith topic
+  sub1<-twp[,i]
+  #go through each model and find most similar topic
+  test.t<-NULL
+  #run through all but final model, which is your original
+  for (j in 1:(length(filenames)-1)){
+    #load next model
+    comp<-read.csv(filenames[j])
+    #clean
+    comp<-comp[,-1]
+    comp<-t(comp)
+    colnames(comp)<-seq(1,ncol(comp))
+    #comp should now mirror twp
+    #go through every topic in comp to find most similar topic in twp
+    #calculate KLD for every topic pair with the ith topic from primary model
+    kld.v<-vector()
+    for (k in 1:ncol(comp)){
+      kld.v[k]<-KL.plugin(sub1, comp[,k])
+    }
+    #find minimum value, i.e. most similar topic
+    top.t<-which(kld.v == min(kld.v))
+    #which model
+    model<-j
+    #what was the divergence?
+    kld.score<-kld.v[which(kld.v == min(kld.v))]
+    #create data frame
+    temp.df<-data.frame(model, top.t, kld.score)
+    test.t<-rbind(test.t, temp.df)
+  }
+  #calculate mean and sd for the ith topic compared to best topic of all other models
+  mean.kld<-mean(test.t$kld.score)
+  sd.kld<-sd(test.t$kld.score)
+  topic<-i
+  temp.df<-data.frame(topic, mean.kld, sd.kld)
+  stable.df<-rbind(stable.df, temp.df)
+}
+
+kable(stable.df)
+
+```
+
+In this table, the topic numbers refer to the topics of model with seed=1, and average kld is in the second column. The lowest scores,  are for topics 17 (0.4648111), 5 (0.6560406), and 16 (0.8006782	), so these are the three topics I choose to use as the basis for as search of the corpus.
+
+## Topics 5, 16, 17 
+
+I have left all relevant discussion of the theoretical elements of these topics -- how they would be understood by some of my cited digital humanists, and what their particular statistical profile means for the search they allow us to conduct -- in the paper. Here I am including the summary data about these topics, and the code by which I have searched the corpus though each topic. 
+
+3 tables selected for the three most stable topics:
+```{r}
+#top 20 words
+
+term_dis_selects<-term_dis[,c(5,16,17)]
+
+kable(term_dis_selects)
+
+#Data from Topic Diagnostics table:
+
+topic.df_selects<-topic.df[c(5,16,17),]
+
+kable(topic.df_selects)
+
+#data from topic stability table:
+
+stable.df_selects<-stable.df[c(5,16,17),]
+
+kable(stable.df_selects)
+
+```
+
+Topic 5 Document search:
+```{r}
+topic.no<-5
+
+# all chunks where topic 5 is the top topic
+
+topic5_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
+
+# this is the same code as was used to generate the no.docs column in the diagnostic table, and collects a list of all the documents above the abitrary threshhold (2 standard deviations) which is set as the "cut" variable.
+
+cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
+
+doc.sub.5<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
+
+doc.sub.5<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+
+
+```
+
+Topic 16 Document search:
+```{r}
+topic.no<-16
+
+# all chunks where topic 8 is the top topic
+
+topic16_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
+
+# this is the same code as was used to generate the no.docs column in the diagnostic table, and collects a list of all the documents above the abitrary threshhold (2 standard deviations) which is set as the "cut" variable.
+
+cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
+
+doc.sub.16<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
+
+doc.sub.16<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+
+```
+
+Topic 17 Document search:
+```{r}
+topic.no<-17
+
+# all chunks where topic 9 is the top topic
+topic17_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
+
+# this is the same code as was used to generate the no.docs column in the diagnostic table, and collects a list of all the documents above the abitrary threshhold (2 standard deviations) which is set as the "cut" variable.
+
+cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
+
+doc.sub.17<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
+
+doc.sub.17<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+
+```
+
+Finally, here is the code to export lists of documents for topics 5, 16, and 17:
+```{r}
+# documents where topic is top exhibited topic
+write.csv(topic5_top, file="Topic5_Top.csv")
+write.csv(topic16_top, file="Topic16_Top.csv")
+write.csv(topic17_top, file="Topic17_Top.csv")
+
+# all documents above the 2 standard deviation threshold
+write.csv(doc.sub.5, file="Topic5_Threshold.csv")
+write.csv(doc.sub.16, file="Topic16_Threshold.csv")
+write.csv(doc.sub.17, file="Topic17_Threshold.csv")
+
+```
+
+
+
+## Notes and Additional Code
+To export top 20 word chart
+```{r}
+write.csv(term_dis, file="Booker_20_20_Top20_seed1.csv") #writes terms per topic
+```
+
+To export the topics by document: 
+```{r}
+write.csv(topic_dis_1, file="BOOKERTOPICSRUN2.csv") # writes top topic per document
+```
+
+### LDA Loop
+A script For running all 20 topic models and exporting files for kda:
+```{r}
+ for (i in 1:20){
+ 
+   k=20
+   
+   control_LDA_Gibbs<-list(alpha=(50/k), estimate.beta=TRUE, iter=1000, burnin=20, best=TRUE, seed=i)
+ 
+    topicmodel<-LDA(corpus2, method="Gibbs", k=k, control = control_LDA_Gibbs)
+    
+    probabilities<-posterior(topicmodel)
+    
+    topic_word_probs<-as.data.frame(probabilities$terms)
+    
+    write.csv(topic_word_probs, file= paste("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
+
+      }
+  
+```
+
+## Works Cited
+
+Beatty, Paul. *The Sellout.* FSG, 2015.
+
+Da, Nan Z. "The Computational Case against Computational Literary Studies," <i>Critical Inquiry</i> vol. 45, no. 3, 2019, pp. 601-639. doi: 10.1086/702594
+
+Lee, James Jaehoon, and Joshua Beckelhimer. "Anthropocene and Empire: Discourse Networks of the Human Record." <i>PMLA</i> vol. 135, no. 1, January 2020, pp. 110–129. doi: 10.1632/pmla.2020.135.1.110
+
+Mimno, Davd et al. "Optimizing semantic coherence in topic models." <i>EMNLP '11: Proceedings of the Conference on Empirical Methods in Natural Language Processing,</i> July 2011, pp. 262–272.
+
+Piper, Andrew. <i>The Fish and the Painting.</i> r4thehumanities.home.blog/. Accessed 20 January 2020.
+
+Piper, Andrew. "handbook." <i>github,</i> 10 Jan 2020. github.com/piperandrew/handbook. Accessed 20 January 2020. 
+
+Piper, Andrew. <i>Enumerations: Data and Literary Study.</i> The  University of Chicago Press, 2018.
+
+Weatherby, Leif. "<i>Critical Response I.</i> Prolegomena to a Theory of Data: On the Most Recent Confrontation of Data and Literature." <i>Critical Inquiry</i> vol. 46, no. 4, 2020, pp. 891-899. doi:10.1086/709228
