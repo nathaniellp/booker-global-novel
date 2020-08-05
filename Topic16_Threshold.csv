@@ -1,58 +1,56 @@
 "","row.names.topic_doc_probs.","topic_doc_probs...topic.no."
-"45","Brief History of Seven Killings, A - Marlon James_045.txt",0.114973262032086
-"121","Brief History of Seven Killings, A - Marlon James_121.txt",0.116766467065868
-"122","Brief History of Seven Killings, A - Marlon James_122.txt",0.139880952380952
-"133","Brief History of Seven Killings, A - Marlon James_133.txt",0.136363636363636
-"204","Brief History of Seven Killings, A - Marlon James_204.txt",0.120588235294118
-"231","Brief History of Seven Killings, A - Marlon James_231.txt",0.122377622377622
-"288","Brief History of Seven Killings, A - Marlon James_288.txt",0.114035087719298
-"294","Brief History of Seven Killings, A - Marlon James_294.txt",0.145161290322581
-"307","Brief History of Seven Killings, A - Marlon James_307.txt",0.124277456647399
-"313","Brief History of Seven Killings, A - Marlon James_313.txt",0.114705882352941
-"324","Brief History of Seven Killings, A - Marlon James_324.txt",0.135542168674699
-"536","Girl, Woman, Other - Bernardine Evaristo_050.txt",0.135245901639344
-"731","Lincoln in the Bardo - George Saunders_018.txt",0.114678899082569
-"765","Lincoln in the Bardo - George Saunders_052.txt",0.174418604651163
-"808","Lincoln in the Bardo - George Saunders_095.txt",0.142201834862385
-"849","Midnight's Children - Salman Rushdie_015.txt",0.140287769784173
-"898","Midnight's Children - Salman Rushdie_064.txt",0.152985074626866
-"936","Midnight's Children - Salman Rushdie_102.txt",0.110526315789474
-"948","Midnight's Children - Salman Rushdie_114.txt",0.134259259259259
-"959","Midnight's Children - Salman Rushdie_125.txt",0.12043795620438
-"991","Midnight's Children - Salman Rushdie_157.txt",0.123931623931624
-"1075","Midnight's Children - Salman Rushdie_241.txt",0.116197183098592
-"1111","Midnight's Children - Salman Rushdie_277.txt",0.111607142857143
-"1126","Midnight's Children - Salman Rushdie_292.txt",0.116935483870968
-"1140","Midnight's Children - Salman Rushdie_306.txt",0.116822429906542
-"1145","Midnight's Children - Salman Rushdie_311.txt",0.154166666666667
-"1152","Midnight's Children - Salman Rushdie_318.txt",0.122340425531915
-"1304","Milkman - Anna Burns_034.txt",0.12109375
-"1310","Milkman - Anna Burns_040.txt",0.128676470588235
-"1362","Milkman - Anna Burns_092.txt",0.137323943661972
-"1417","Milkman - Anna Burns_147.txt",0.117021276595745
-"1435","Milkman - Anna Burns_165.txt",0.142201834862385
-"1448","Milkman - Anna Burns_178.txt",0.132575757575758
-"1460","Milkman - Anna Burns_190.txt",0.119230769230769
-"1465","Milkman - Anna Burns_195.txt",0.144444444444444
-"1476","Milkman - Anna Burns_206.txt",0.132478632478632
-"1503","Milkman - Anna Burns_233.txt",0.113138686131387
-"1516","Milkman - Anna Burns_246.txt",0.111538461538462
-"1534","Narrow Road to the Deep North, The - Flanagan, Richard_007.txt",0.115384615384615
-"1565","Narrow Road to the Deep North, The - Flanagan, Richard_038.txt",0.111510791366906
-"1603","Narrow Road to the Deep North, The - Flanagan, Richard_076.txt",0.142384105960265
-"1612","Narrow Road to the Deep North, The - Flanagan, Richard_085.txt",0.127049180327869
-"1613","Narrow Road to the Deep North, The - Flanagan, Richard_086.txt",0.157342657342657
-"1642","Narrow Road to the Deep North, The - Flanagan, Richard_115.txt",0.111607142857143
-"1691","Narrow Road to the Deep North, The - Flanagan, Richard_164.txt",0.135658914728682
-"1703","Narrow Road to the Deep North, The - Flanagan, Richard_176.txt",0.110655737704918
-"1738","Narrow Road to the Deep North, The - Flanagan, Richard_211.txt",0.115079365079365
-"1772","Narrow Road to the Deep North, The - Flanagan, Richard_245.txt",0.118852459016393
-"1816","Sellout, The - Paul Beatty_044.txt",0.13135593220339
-"1830","Sellout, The - Paul Beatty_058.txt",0.170833333333333
-"1857","Sellout, The - Paul Beatty_085.txt",0.131578947368421
-"1903","Sellout, The - Paul Beatty_131.txt",0.123853211009174
-"1926","Sellout, The - Paul Beatty_154.txt",0.130597014925373
-"1989","Testaments, The - Margaret Atwood_048.txt",0.114583333333333
-"2079","Testaments, The - Margaret Atwood_138.txt",0.113636363636364
-"2085","Testaments, The - Margaret Atwood_144.txt",0.113970588235294
-"2100","Testaments, The - Margaret Atwood_159.txt",0.118320610687023
+"24","Brief History of Seven Killings, A - Marlon James_024.txt",0.130573248407643
+"229","Brief History of Seven Killings, A - Marlon James_229.txt",0.123333333333333
+"359","Brief History of Seven Killings, A - Marlon James_359.txt",0.111486486486486
+"583","Girl, Woman, Other - Bernardine Evaristo_097.txt",0.139830508474576
+"615","Girl, Woman, Other - Bernardine Evaristo_129.txt",0.121621621621622
+"638","Girl, Woman, Other - Bernardine Evaristo_152.txt",0.121848739495798
+"698","Girl, Woman, Other - Bernardine Evaristo_212.txt",0.16304347826087
+"780","Lincoln in the Bardo - George Saunders_067.txt",0.122881355932203
+"789","Lincoln in the Bardo - George Saunders_076.txt",0.148305084745763
+"791","Lincoln in the Bardo - George Saunders_078.txt",0.205223880597015
+"792","Lincoln in the Bardo - George Saunders_079.txt",0.144628099173554
+"809","Lincoln in the Bardo - George Saunders_096.txt",0.125
+"831","Lincoln in the Bardo - George Saunders_118.txt",0.119834710743802
+"839","Midnight's Children - Salman Rushdie_005.txt",0.117391304347826
+"1277","Milkman - Anna Burns_007.txt",0.115079365079365
+"1313","Milkman - Anna Burns_043.txt",0.138392857142857
+"1388","Milkman - Anna Burns_118.txt",0.119834710743802
+"1396","Milkman - Anna Burns_126.txt",0.148854961832061
+"1400","Milkman - Anna Burns_130.txt",0.13671875
+"1402","Milkman - Anna Burns_132.txt",0.142241379310345
+"1434","Milkman - Anna Burns_164.txt",0.130952380952381
+"1499","Milkman - Anna Burns_229.txt",0.123853211009174
+"1515","Milkman - Anna Burns_245.txt",0.116379310344828
+"1539","Narrow Road to the Deep North, The - Flanagan, Richard_012.txt",0.170454545454545
+"1540","Narrow Road to the Deep North, The - Flanagan, Richard_013.txt",0.113861386138614
+"1554","Narrow Road to the Deep North, The - Flanagan, Richard_027.txt",0.128318584070796
+"1607","Narrow Road to the Deep North, The - Flanagan, Richard_080.txt",0.133064516129032
+"1656","Narrow Road to the Deep North, The - Flanagan, Richard_129.txt",0.157657657657658
+"1675","Narrow Road to the Deep North, The - Flanagan, Richard_148.txt",0.130597014925373
+"1679","Narrow Road to the Deep North, The - Flanagan, Richard_152.txt",0.161870503597122
+"1680","Narrow Road to the Deep North, The - Flanagan, Richard_153.txt",0.121848739495798
+"1682","Narrow Road to the Deep North, The - Flanagan, Richard_155.txt",0.135036496350365
+"1687","Narrow Road to the Deep North, The - Flanagan, Richard_160.txt",0.15234375
+"1690","Narrow Road to the Deep North, The - Flanagan, Richard_163.txt",0.110576923076923
+"1703","Narrow Road to the Deep North, The - Flanagan, Richard_176.txt",0.127049180327869
+"1713","Narrow Road to the Deep North, The - Flanagan, Richard_186.txt",0.110687022900763
+"1733","Narrow Road to the Deep North, The - Flanagan, Richard_206.txt",0.126016260162602
+"1737","Narrow Road to the Deep North, The - Flanagan, Richard_210.txt",0.110655737704918
+"1741","Narrow Road to the Deep North, The - Flanagan, Richard_214.txt",0.139830508474576
+"1836","Sellout, The - Paul Beatty_064.txt",0.118421052631579
+"1902","Sellout, The - Paul Beatty_130.txt",0.112403100775194
+"1949","Testaments, The - Margaret Atwood_008.txt",0.126923076923077
+"1959","Testaments, The - Margaret Atwood_018.txt",0.117391304347826
+"1997","Testaments, The - Margaret Atwood_056.txt",0.135761589403974
+"2016","Testaments, The - Margaret Atwood_075.txt",0.112612612612613
+"2030","Testaments, The - Margaret Atwood_089.txt",0.125
+"2037","Testaments, The - Margaret Atwood_096.txt",0.160550458715596
+"2057","Testaments, The - Margaret Atwood_116.txt",0.110576923076923
+"2061","Testaments, The - Margaret Atwood_120.txt",0.111570247933884
+"2063","Testaments, The - Margaret Atwood_122.txt",0.127906976744186
+"2069","Testaments, The - Margaret Atwood_128.txt",0.12890625
+"2077","Testaments, The - Margaret Atwood_136.txt",0.1375
+"2108","Testaments, The - Margaret Atwood_167.txt",0.155913978494624
+"2117","Testaments, The - Margaret Atwood_176.txt",0.113970588235294
+"2119","Testaments, The - Margaret Atwood_178.txt",0.11328125

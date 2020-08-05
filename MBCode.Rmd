@@ -4,14 +4,14 @@ output: html_notebook
 css: "MBFormat.css"
 author: Nathaniel LaCelle-Peterson
 ---
-All code is sourced from Andrew Piper's github directory (https://github.com/piperandrew/handbook) which accompanies his *Fish and the Painting* guide (https://r4thehumanities.home.blog/) that provides a step-by-step guide to the logic of this code and its implementation.   
+All code is sourced from Andrew Piper's GitHub directory (https://github.com/piperandrew/handbook) which accompanies his *Fish and the Painting* guide (https://r4thehumanities.home.blog/) that provides a step-by-step guide to the logic of this code and its implementation.   
 
 
 
 
 ## Start up code
 
-This code loads the required libraries, and sets the working directory (my working directory is in this case the folder "booker-global-novel"):
+This code loads the required libraries, and sets the working directory (my working directory is in this case the folder "Corpus1"):
 ```{r}
 library("tm")
 
@@ -27,7 +27,7 @@ library("topicmodels")
 
 library("knitr")
 
-setwd("NLP/Documents/GitHub/booker-global-novel")
+setwd("~/Desktop/Corpus1")
 
 ```
 
@@ -44,7 +44,7 @@ f.names<-list.files(path="booker_novels")
 
 This code defines a function, text.prep, which cleans the files of irrelevant formatting and non-semantic characters (page numbers, chapter numbers, etc.). 
 
-Like the rest of this code, I am implementing it from Andrew Piper's topic modeling Github depository. Piper's code cannot remove dashes from compound words and split them into to separate words because of how it scans the document, which is a problem for the formatting of many of these texts where dashes are used playfully (*Midnight's Children*). I have, for this run, gone through manually and used find/replace to find each dash (all sizes) in the original .txt files. 
+Like the rest of this code, I am implementing it from Andrew Piper's topic modeling GitHub depository. Piper's code cannot remove dashes from compound words and split them into to separate words because of how it scans the document, which is a problem for the formatting of many of these texts where dashes are used playfully (*Midnight's Children*). I have, for this run, gone through manually and used find/replace to find each dash (all sizes) in the original .txt files. 
 ```{r}
 text.prep<-function(x){
   
@@ -82,7 +82,7 @@ for (i in 1:length(f.names)){
 
   #set your working directory inside of your novels
 
-  setwd("NLP/Documents/GitHub/booker-global-novel/booker_novels")
+  setwd("~/Desktop/Corpus1/booker_novels")
 
   #ingest and clean each text using the text.prep function
 
@@ -90,7 +90,7 @@ for (i in 1:length(f.names)){
 
   #set your working directory to a new folder for the chunks
 
-  setwd("NLP/Documents/GitHub/booker-global-novel/booker_novels_chunks_500")
+  setwd("~/Desktop/Corpus1/booker_novels_chunks_500")
 
   #set file number integer
 
@@ -128,13 +128,13 @@ The "bag of words" topic model generates topics by from the frequency of words i
 
 This code ingests the corpus cleaned during chunking, and then creates a document-term matrix on that corpus: 
 ```{r}
-setwd("NLP/Documents/GitHub/booker-global-novel")
+setwd("~/Desktop/Corpus1")
 
-booker-global-novel <- VCorpus(DirSource("booker_novels_chunks_500", encoding =
+corpus1 <- VCorpus(DirSource("booker_novels_chunks_500", encoding =
                                
             "UTF-8"), readerControl=list(language="English"))
 
-booker-global-novel.dtm<-DocumentTermMatrix(booker-global-novel, control=list(wordLengths=c(1,Inf))) 
+corpus1.dtm<-DocumentTermMatrix(corpus1, control=list(wordLengths=c(1,Inf))) 
  
 ``` 
 
@@ -158,11 +158,11 @@ Removing words that do not appear in at least 10% of texts is a way of removing 
 
 To remove the names, I manually read through the novels and built a spreadsheet of every major character name and nickname (this process was made possible by the editorial decision to include a list of character names at the beginning of Marlon James' *A Brief History of Seven Killings*.) The code below reads my list file "Names_combined.csv" and removes from the names from the document-term matrix with modified lines of Piper's code for stopword removal.
 ```{r}
-setwd("NLP/Documents/GitHub/booker-global-novel/Dictionaries")
+setwd("~/Desktop/Corpus1/Dictionaries")
 
 names <- read.csv("Names_combined.csv", header=F, stringsAsFactors = F)
 
-dtm<-booker-global-novel.dtm[,which(!(colnames(booker-global-novel.dtm) %in% names$V1))]
+dtm<-corpus1.dtm[,which(!(colnames(corpus1.dtm) %in% names$V1))]
 
 inspect(dtm)
 
@@ -240,7 +240,7 @@ I cannot solve these conundra through Levin's model, and as the broader theoreti
 
 I define three parameters of the topic model:
    * k: this is the number of topics the model will produce. Here, k is set to 20
-   * alpha: as Piper describes it, the alpha is a value whose varation produces "topics that are more unique to individual documents or... topics that are more well-distributed across the entire corpus. A low alpha will give you very distinct topics...  a high alpha will give you several topics that are associated in similar manner with a single document... 50/k is recommended for a high alpha, 0.001 for a low alpha" (Piper github). I have started with 50/k per the intended use of this topic model as a search function
+   * alpha: as Piper describes it, the alpha is a value whose varation produces "topics that are more unique to individual documents or... topics that are more well-distributed across the entire corpus. A low alpha will give you very distinct topics...  a high alpha will give you several topics that are associated in similar manner with a single document... 50/k is recommended for a high alpha, 0.001 for a low alpha" (Piper GitHub). I have started with 50/k per the intended use of this topic model as a search function
    * seed: as topic models are probabilistic, the seed is set for reproducibility. For the 20 runs of the topic model that I will be using, the seeds for each model correspond to their number (1-20). The model whose topics I use in my analysis is seed=1. 
 
 This code sets stores the parameters in the "control_LDA_Gibbs" variable: 
@@ -420,7 +420,7 @@ In Lee and Beckelhimer's "Anthropocene and Empire", the topic model can function
 
 topic_word_probs<-as.data.frame(probabilities$terms)
 
-write.csv(topic_word_probs, file= paste("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
+write.csv(topic_word_probs, file= paste("~/Desktop/Corpus1/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
 
 ```
 
@@ -430,9 +430,9 @@ library(topicmodels)
 library(entropy)
 
 #load all models
-setwd("NLP/Documents/GitHub/booker-global-novel")
+setwd("~/Desktop/Corpus1")
 filenames<-list.files("topicmodel_samples")
-setwd("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples")
+setwd("~/Desktop/Corpus1/topicmodel_samples")
 
 #load primary model
 #this is the model you plan to use
@@ -490,7 +490,7 @@ kable(stable.df)
 
 ```
 
-In this table, the topic numbers refer to the topics of model with seed=1, and average kld is in the second column. The lowest scores,  are for topics 17 (0.4648111), 5 (0.6560406), and 16 (0.8006782	), so these are the three topics I choose to use as the basis for as search of the corpus.
+In this table, the topic numbers refer to the topics of model with seed=1, and average kld is in the second column. The lowest scores,  are for topics 17 (0.4648111), 5 (0.6560406), and 16 (0.8006782), so these are the three topics I choose to use as the basis for as search of the corpus.
 
 ## Topics 5, 16, 17 
 
@@ -521,7 +521,7 @@ kable(stable.df_selects)
 Topic 5 Document search:
 ```{r}
 topic.no<-5
-
+# CURRENTLY NOT WORKING 
 # all chunks where topic 5 is the top topic
 
 topic5_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
@@ -532,7 +532,7 @@ cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
 
 doc.sub.5<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
 
-doc.sub.5<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+doc.sub.5<-doc.sub.5[which(doc.sub.5$topic_doc_probs...topic.no. > cut),]
 
 
 ```
@@ -540,8 +540,8 @@ doc.sub.5<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
 Topic 16 Document search:
 ```{r}
 topic.no<-16
-
-# all chunks where topic 8 is the top topic
+# CURRENTLY NOT WORKING
+# all chunks where topic 16 is the top topic
 
 topic16_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
 
@@ -551,15 +551,15 @@ cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
 
 doc.sub.16<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
 
-doc.sub.16<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+doc.sub.16<-doc.sub.16[which(doc.sub.16$topic_doc_probs...topic.no. > cut),]
 
 ```
 
 Topic 17 Document search:
 ```{r}
 topic.no<-17
-
-# all chunks where topic 9 is the top topic
+# CURRENTLY NOT WORKING
+# all chunks where topic 17 is the top topic
 topic17_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
 
 # this is the same code as was used to generate the no.docs column in the diagnostic table, and collects a list of all the documents above the abitrary threshhold (2 standard deviations) which is set as the "cut" variable.
@@ -568,7 +568,7 @@ cut<-mean(as.matrix(topic_doc_probs))+(2*sd(as.matrix(topic_doc_probs)))
 
 doc.sub.17<-data.frame(row.names(topic_doc_probs), topic_doc_probs[,topic.no])
 
-doc.sub.17<-doc.sub[which(doc.sub$topic_doc_probs...topic.no. > cut),]
+doc.sub.17<-doc.sub.17[which(doc.sub.17$topic_doc_probs...topic.no. > cut),]
 
 ```
 
@@ -614,11 +614,42 @@ A script For running all 20 topic models and exporting files for kda:
     
     topic_word_probs<-as.data.frame(probabilities$terms)
     
-    write.csv(topic_word_probs, file= paste("NLP/Documents/GitHub/booker-global-novel/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
+    write.csv(topic_word_probs, file= paste("~/Desktop/Corpus1/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
 
       }
   
 ```
+
+
+
+
+This code copies the chunks with presence for each topic greater than 2sd:
+```{r}
+# this code chunk by Nathaniel LaCelle-Peterson
+threshold.list.5<-doc.sub.5$row.names.topic_doc_probs.
+setwd("~/Desktop/Corpus1/booker_novels_chunks_500")
+for (row in 1:nrow(doc.sub.5)) {
+  file.copy(as.character(doc.sub.5$row.names.topic_doc_probs.[row]), "~/Desktop/Corpus1/5thresholdchunks")
+}
+
+threshold.list.16<-doc.sub.16$row.names.topic_doc_probs.
+setwd("~/Desktop/Corpus1/booker_novels_chunks_500")
+for (row in 1:nrow(doc.sub.16)) {
+  file.copy(as.character(doc.sub.16$row.names.topic_doc_probs.[row]), "~/Desktop/Corpus1/16thresholdchunks")
+}
+
+threshold.list.17<-doc.sub.17$row.names.topic_doc_probs.
+setwd("~/Desktop/Corpus1/booker_novels_chunks_500")
+for (row in 1:nrow(doc.sub.17)) {
+  file.copy(as.character(doc.sub.17$row.names.topic_doc_probs.[row]), "~/Desktop/Corpus1/17thresholdchunks")
+}
+
+```
+
+
+
+
+
 
 ## Works Cited
 
@@ -632,7 +663,7 @@ Mimno, Davd et al. "Optimizing semantic coherence in topic models." <i>EMNLP '11
 
 Piper, Andrew. <i>The Fish and the Painting.</i> r4thehumanities.home.blog/. Accessed 20 January 2020.
 
-Piper, Andrew. "handbook." <i>github,</i> 10 Jan 2020. github.com/piperandrew/handbook. Accessed 20 January 2020. 
+Piper, Andrew. "handbook." <i>GitHub,</i> 10 Jan 2020. github.com/piperandrew/handbook. Accessed 20 January 2020. 
 
 Piper, Andrew. <i>Enumerations: Data and Literary Study.</i> The  University of Chicago Press, 2018.
 
