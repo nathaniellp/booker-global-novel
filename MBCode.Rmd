@@ -1,8 +1,11 @@
 ---
-title: Man Booker Palimpsest Code
-output: html_notebook
-css: "MBFormat.css"
-author: Nathaniel LaCelle-Peterson
+title: "Man Booker Palimpsest Code"
+author: "Nathaniel LaCelle-Peterson"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+css: MBFormat.css
 ---
 All code is sourced from Andrew Piper's GitHub directory (https://github.com/piperandrew/handbook) which accompanies his *Fish and the Painting* guide (https://r4thehumanities.home.blog/) that provides a step-by-step guide to the logic of this code and its implementation.   
 
@@ -521,7 +524,6 @@ kable(stable.df_selects)
 Topic 5 Document search:
 ```{r}
 topic.no<-5
-# CURRENTLY NOT WORKING 
 # all chunks where topic 5 is the top topic
 
 topic5_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
@@ -540,7 +542,6 @@ doc.sub.5<-doc.sub.5[which(doc.sub.5$topic_doc_probs...topic.no. > cut),]
 Topic 16 Document search:
 ```{r}
 topic.no<-16
-# CURRENTLY NOT WORKING
 # all chunks where topic 16 is the top topic
 
 topic16_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
@@ -558,7 +559,6 @@ doc.sub.16<-doc.sub.16[which(doc.sub.16$topic_doc_probs...topic.no. > cut),]
 Topic 17 Document search:
 ```{r}
 topic.no<-17
-# CURRENTLY NOT WORKING
 # all chunks where topic 17 is the top topic
 topic17_top <- topic_dis_1[c(which(topic_dis_1 == topic.no))]
 
@@ -602,22 +602,22 @@ write.csv(topic_dis_1, file="BOOKERTOPICSRUN2.csv") # writes top topic per docum
 ### LDA Loop
 A script For running all 20 topic models and exporting files for kda:
 ```{r}
- for (i in 1:20){
- 
-   k=20
-   
-   control_LDA_Gibbs<-list(alpha=(50/k), estimate.beta=TRUE, iter=1000, burnin=20, best=TRUE, seed=i)
- 
-    topicmodel<-LDA(corpus2, method="Gibbs", k=k, control = control_LDA_Gibbs)
-    
-    probabilities<-posterior(topicmodel)
-    
-    topic_word_probs<-as.data.frame(probabilities$terms)
-    
-    write.csv(topic_word_probs, file= paste("~/Desktop/Corpus1/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
-
-      }
-  
+ #for (i in 1:20){
+ #
+#   k=20
+#   
+#   control_LDA_Gibbs<-list(alpha=(50/k), estimate.beta=TRUE, iter=1000, burnin=20, best=TRUE, seed=i)
+# 
+#    topicmodel<-LDA(corpus2, method="Gibbs", k=k, control = control_LDA_Gibbs)
+#    
+#    probabilities<-posterior(topicmodel)
+#    
+#    topic_word_probs<-as.data.frame(probabilities$terms)
+#    
+#    write.csv(topic_word_probs, file= paste("~/Desktop/Corpus1/topicmodel_samples/booker_novels_",control_LDA_Gibbs$seed,".csv", sep = ""))
+#
+#      }
+#  
 ```
 
 
@@ -646,9 +646,13 @@ for (row in 1:nrow(doc.sub.17)) {
 
 ```
 
+This code collects all of the chunks with their number in 1 document to print out read on the train
+```{r}
+# for each doc 
+# save the name
+# 
 
-
-
+```
 
 
 ## Works Cited
