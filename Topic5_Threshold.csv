@@ -1,96 +1,155 @@
 "","row.names.topic_doc_probs.","topic_doc_probs...topic.no."
-"84","Brief History of Seven Killings, A - Marlon James_084.txt",0.121301775147929
-"85","Brief History of Seven Killings, A - Marlon James_085.txt",0.114705882352941
-"89","Brief History of Seven Killings, A - Marlon James_089.txt",0.130281690140845
-"96","Brief History of Seven Killings, A - Marlon James_096.txt",0.133540372670807
-"99","Brief History of Seven Killings, A - Marlon James_099.txt",0.119883040935673
-"152","Brief History of Seven Killings, A - Marlon James_152.txt",0.12111801242236
-"285","Brief History of Seven Killings, A - Marlon James_285.txt",0.186390532544379
-"322","Brief History of Seven Killings, A - Marlon James_322.txt",0.111510791366906
-"352","Brief History of Seven Killings, A - Marlon James_352.txt",0.138235294117647
-"365","Brief History of Seven Killings, A - Marlon James_365.txt",0.129518072289157
-"380","Brief History of Seven Killings, A - Marlon James_380.txt",0.113372093023256
-"404","Brief History of Seven Killings, A - Marlon James_404.txt",0.12202380952381
-"416","Brief History of Seven Killings, A - Marlon James_416.txt",0.11139896373057
-"418","Brief History of Seven Killings, A - Marlon James_418.txt",0.133136094674556
-"496","Girl, Woman, Other - Bernardine Evaristo_010.txt",0.115079365079365
-"505","Girl, Woman, Other - Bernardine Evaristo_019.txt",0.113636363636364
-"520","Girl, Woman, Other - Bernardine Evaristo_034.txt",0.119469026548673
-"528","Girl, Woman, Other - Bernardine Evaristo_042.txt",0.119469026548673
-"529","Girl, Woman, Other - Bernardine Evaristo_043.txt",0.143478260869565
-"547","Girl, Woman, Other - Bernardine Evaristo_061.txt",0.137795275590551
-"576","Girl, Woman, Other - Bernardine Evaristo_090.txt",0.115079365079365
-"721","Lincoln in the Bardo - George Saunders_008.txt",0.113636363636364
-"739","Lincoln in the Bardo - George Saunders_026.txt",0.119469026548673
-"743","Lincoln in the Bardo - George Saunders_030.txt",0.115740740740741
-"864","Midnight's Children - Salman Rushdie_030.txt",0.129807692307692
-"888","Midnight's Children - Salman Rushdie_054.txt",0.111607142857143
-"892","Midnight's Children - Salman Rushdie_058.txt",0.129166666666667
-"900","Midnight's Children - Salman Rushdie_066.txt",0.118320610687023
-"910","Midnight's Children - Salman Rushdie_076.txt",0.112403100775194
-"911","Midnight's Children - Salman Rushdie_077.txt",0.113013698630137
-"942","Midnight's Children - Salman Rushdie_108.txt",0.151851851851852
-"943","Midnight's Children - Salman Rushdie_109.txt",0.138655462184874
-"958","Midnight's Children - Salman Rushdie_124.txt",0.116935483870968
-"973","Midnight's Children - Salman Rushdie_139.txt",0.125
-"990","Midnight's Children - Salman Rushdie_156.txt",0.114406779661017
-"1030","Midnight's Children - Salman Rushdie_196.txt",0.412751677852349
-"1060","Midnight's Children - Salman Rushdie_226.txt",0.111538461538462
-"1182","Midnight's Children - Salman Rushdie_348.txt",0.110576923076923
-"1484","Milkman - Anna Burns_214.txt",0.113793103448276
-"1760","Narrow Road to the Deep North, The - Flanagan, Richard_233.txt",0.11328125
-"1776","Sellout, The - Paul Beatty_004.txt",0.115
-"1778","Sellout, The - Paul Beatty_006.txt",0.110655737704918
-"1782","Sellout, The - Paul Beatty_010.txt",0.16412213740458
-"1783","Sellout, The - Paul Beatty_011.txt",0.174074074074074
-"1785","Sellout, The - Paul Beatty_013.txt",0.119469026548673
-"1786","Sellout, The - Paul Beatty_014.txt",0.122881355932203
-"1787","Sellout, The - Paul Beatty_015.txt",0.112403100775194
-"1789","Sellout, The - Paul Beatty_017.txt",0.140909090909091
-"1792","Sellout, The - Paul Beatty_020.txt",0.115740740740741
-"1793","Sellout, The - Paul Beatty_021.txt",0.134259259259259
-"1818","Sellout, The - Paul Beatty_046.txt",0.148305084745763
-"1821","Sellout, The - Paul Beatty_049.txt",0.118852459016393
-"1827","Sellout, The - Paul Beatty_055.txt",0.125
-"1829","Sellout, The - Paul Beatty_057.txt",0.113636363636364
-"1834","Sellout, The - Paul Beatty_062.txt",0.116
-"1838","Sellout, The - Paul Beatty_066.txt",0.122222222222222
-"1841","Sellout, The - Paul Beatty_069.txt",0.235074626865672
-"1846","Sellout, The - Paul Beatty_074.txt",0.138297872340426
-"1847","Sellout, The - Paul Beatty_075.txt",0.115740740740741
-"1849","Sellout, The - Paul Beatty_077.txt",0.144736842105263
-"1850","Sellout, The - Paul Beatty_078.txt",0.209923664122137
-"1852","Sellout, The - Paul Beatty_080.txt",0.144736842105263
-"1857","Sellout, The - Paul Beatty_085.txt",0.139097744360902
-"1860","Sellout, The - Paul Beatty_088.txt",0.111570247933884
-"1868","Sellout, The - Paul Beatty_096.txt",0.148305084745763
-"1871","Sellout, The - Paul Beatty_099.txt",0.116935483870968
-"1873","Sellout, The - Paul Beatty_101.txt",0.113445378151261
-"1885","Sellout, The - Paul Beatty_113.txt",0.1375
-"1888","Sellout, The - Paul Beatty_116.txt",0.118852459016393
-"1891","Sellout, The - Paul Beatty_119.txt",0.115384615384615
-"1898","Sellout, The - Paul Beatty_126.txt",0.162878787878788
-"1900","Sellout, The - Paul Beatty_128.txt",0.124
-"1903","Sellout, The - Paul Beatty_131.txt",0.114678899082569
-"1911","Sellout, The - Paul Beatty_139.txt",0.116935483870968
-"1912","Sellout, The - Paul Beatty_140.txt",0.156779661016949
-"1914","Sellout, The - Paul Beatty_142.txt",0.125
-"1919","Sellout, The - Paul Beatty_147.txt",0.134259259259259
-"1922","Sellout, The - Paul Beatty_150.txt",0.117424242424242
-"1929","Sellout, The - Paul Beatty_157.txt",0.119230769230769
-"1931","Sellout, The - Paul Beatty_159.txt",0.128099173553719
-"1933","Sellout, The - Paul Beatty_161.txt",0.202702702702703
-"1935","Sellout, The - Paul Beatty_163.txt",0.138392857142857
-"1939","Sellout, The - Paul Beatty_167.txt",0.156488549618321
-"1940","Sellout, The - Paul Beatty_168.txt",0.151408450704225
-"1948","Testaments, The - Margaret Atwood_007.txt",0.111538461538462
-"1994","Testaments, The - Margaret Atwood_053.txt",0.139097744360902
-"1998","Testaments, The - Margaret Atwood_057.txt",0.126923076923077
-"2010","Testaments, The - Margaret Atwood_069.txt",0.147058823529412
-"2011","Testaments, The - Margaret Atwood_070.txt",0.149193548387097
-"2012","Testaments, The - Margaret Atwood_071.txt",0.118852459016393
-"2013","Testaments, The - Margaret Atwood_072.txt",0.151851851851852
-"2022","Testaments, The - Margaret Atwood_081.txt",0.118852459016393
-"2024","Testaments, The - Margaret Atwood_083.txt",0.15530303030303
-"2029","Testaments, The - Margaret Atwood_088.txt",0.116935483870968
-"2072","Testaments, The - Margaret Atwood_131.txt",0.123134328358209
+"490","Girl, Woman, Other - Bernardine Evaristo_004.txt",0.134146341463415
+"504","Girl, Woman, Other - Bernardine Evaristo_018.txt",0.183453237410072
+"516","Girl, Woman, Other - Bernardine Evaristo_030.txt",0.114173228346457
+"542","Girl, Woman, Other - Bernardine Evaristo_056.txt",0.135964912280702
+"552","Girl, Woman, Other - Bernardine Evaristo_066.txt",0.123134328358209
+"562","Girl, Woman, Other - Bernardine Evaristo_076.txt",0.138655462184874
+"568","Girl, Woman, Other - Bernardine Evaristo_082.txt",0.116935483870968
+"581","Girl, Woman, Other - Bernardine Evaristo_095.txt",0.179389312977099
+"585","Girl, Woman, Other - Bernardine Evaristo_099.txt",0.117857142857143
+"603","Girl, Woman, Other - Bernardine Evaristo_117.txt",0.116935483870968
+"610","Girl, Woman, Other - Bernardine Evaristo_124.txt",0.123015873015873
+"612","Girl, Woman, Other - Bernardine Evaristo_126.txt",0.139830508474576
+"626","Girl, Woman, Other - Bernardine Evaristo_140.txt",0.146017699115044
+"627","Girl, Woman, Other - Bernardine Evaristo_141.txt",0.209219858156028
+"662","Girl, Woman, Other - Bernardine Evaristo_176.txt",0.12406015037594
+"665","Girl, Woman, Other - Bernardine Evaristo_179.txt",0.150406504065041
+"670","Girl, Woman, Other - Bernardine Evaristo_184.txt",0.122377622377622
+"671","Girl, Woman, Other - Bernardine Evaristo_185.txt",0.119565217391304
+"673","Girl, Woman, Other - Bernardine Evaristo_187.txt",0.127586206896552
+"681","Girl, Woman, Other - Bernardine Evaristo_195.txt",0.11328125
+"731","Lincoln in the Bardo - George Saunders_018.txt",0.142201834862385
+"789","Lincoln in the Bardo - George Saunders_076.txt",0.122881355932203
+"804","Lincoln in the Bardo - George Saunders_091.txt",0.138655462184874
+"805","Lincoln in the Bardo - George Saunders_092.txt",0.128571428571429
+"836","Midnight's Children - Salman Rushdie_002.txt",0.153508771929825
+"837","Midnight's Children - Salman Rushdie_003.txt",0.110619469026549
+"844","Midnight's Children - Salman Rushdie_010.txt",0.13671875
+"846","Midnight's Children - Salman Rushdie_012.txt",0.122881355932203
+"852","Midnight's Children - Salman Rushdie_018.txt",0.125
+"856","Midnight's Children - Salman Rushdie_022.txt",0.127049180327869
+"857","Midnight's Children - Salman Rushdie_023.txt",0.151851851851852
+"869","Midnight's Children - Salman Rushdie_035.txt",0.131067961165049
+"871","Midnight's Children - Salman Rushdie_037.txt",0.123015873015873
+"873","Midnight's Children - Salman Rushdie_039.txt",0.180672268907563
+"874","Midnight's Children - Salman Rushdie_040.txt",0.170454545454545
+"883","Midnight's Children - Salman Rushdie_049.txt",0.117391304347826
+"885","Midnight's Children - Salman Rushdie_051.txt",0.113445378151261
+"886","Midnight's Children - Salman Rushdie_052.txt",0.124
+"889","Midnight's Children - Salman Rushdie_055.txt",0.204
+"890","Midnight's Children - Salman Rushdie_056.txt",0.123134328358209
+"891","Midnight's Children - Salman Rushdie_057.txt",0.150735294117647
+"899","Midnight's Children - Salman Rushdie_065.txt",0.148305084745763
+"904","Midnight's Children - Salman Rushdie_070.txt",0.119834710743802
+"907","Midnight's Children - Salman Rushdie_073.txt",0.17175572519084
+"928","Midnight's Children - Salman Rushdie_094.txt",0.160869565217391
+"929","Midnight's Children - Salman Rushdie_095.txt",0.131578947368421
+"937","Midnight's Children - Salman Rushdie_103.txt",0.119834710743802
+"938","Midnight's Children - Salman Rushdie_104.txt",0.157657657657658
+"945","Midnight's Children - Salman Rushdie_111.txt",0.133093525179856
+"946","Midnight's Children - Salman Rushdie_112.txt",0.17578125
+"955","Midnight's Children - Salman Rushdie_121.txt",0.212264150943396
+"957","Midnight's Children - Salman Rushdie_123.txt",0.164233576642336
+"958","Midnight's Children - Salman Rushdie_124.txt",0.141129032258065
+"964","Midnight's Children - Salman Rushdie_130.txt",0.158783783783784
+"965","Midnight's Children - Salman Rushdie_131.txt",0.130952380952381
+"967","Midnight's Children - Salman Rushdie_133.txt",0.152173913043478
+"968","Midnight's Children - Salman Rushdie_134.txt",0.121621621621622
+"974","Midnight's Children - Salman Rushdie_140.txt",0.114406779661017
+"977","Midnight's Children - Salman Rushdie_143.txt",0.141025641025641
+"979","Midnight's Children - Salman Rushdie_145.txt",0.132352941176471
+"981","Midnight's Children - Salman Rushdie_147.txt",0.117424242424242
+"982","Midnight's Children - Salman Rushdie_148.txt",0.179389312977099
+"983","Midnight's Children - Salman Rushdie_149.txt",0.139097744360902
+"989","Midnight's Children - Salman Rushdie_155.txt",0.119565217391304
+"994","Midnight's Children - Salman Rushdie_160.txt",0.167910447761194
+"999","Midnight's Children - Salman Rushdie_165.txt",0.147321428571429
+"1003","Midnight's Children - Salman Rushdie_169.txt",0.14
+"1005","Midnight's Children - Salman Rushdie_171.txt",0.112745098039216
+"1011","Midnight's Children - Salman Rushdie_177.txt",0.163716814159292
+"1018","Midnight's Children - Salman Rushdie_184.txt",0.148305084745763
+"1019","Midnight's Children - Salman Rushdie_185.txt",0.136792452830189
+"1020","Midnight's Children - Salman Rushdie_186.txt",0.122727272727273
+"1021","Midnight's Children - Salman Rushdie_187.txt",0.136363636363636
+"1022","Midnight's Children - Salman Rushdie_188.txt",0.177884615384615
+"1024","Midnight's Children - Salman Rushdie_190.txt",0.225409836065574
+"1027","Midnight's Children - Salman Rushdie_193.txt",0.139423076923077
+"1028","Midnight's Children - Salman Rushdie_194.txt",0.157657657657658
+"1029","Midnight's Children - Salman Rushdie_195.txt",0.163157894736842
+"1038","Midnight's Children - Salman Rushdie_204.txt",0.1375
+"1040","Midnight's Children - Salman Rushdie_206.txt",0.135
+"1043","Midnight's Children - Salman Rushdie_209.txt",0.126086956521739
+"1063","Midnight's Children - Salman Rushdie_229.txt",0.127358490566038
+"1071","Midnight's Children - Salman Rushdie_237.txt",0.14041095890411
+"1072","Midnight's Children - Salman Rushdie_238.txt",0.110619469026549
+"1074","Midnight's Children - Salman Rushdie_240.txt",0.134259259259259
+"1077","Midnight's Children - Salman Rushdie_243.txt",0.121621621621622
+"1080","Midnight's Children - Salman Rushdie_246.txt",0.112745098039216
+"1084","Midnight's Children - Salman Rushdie_250.txt",0.133663366336634
+"1087","Midnight's Children - Salman Rushdie_253.txt",0.15546218487395
+"1089","Midnight's Children - Salman Rushdie_255.txt",0.113636363636364
+"1090","Midnight's Children - Salman Rushdie_256.txt",0.14957264957265
+"1091","Midnight's Children - Salman Rushdie_257.txt",0.117924528301887
+"1092","Midnight's Children - Salman Rushdie_258.txt",0.189516129032258
+"1095","Midnight's Children - Salman Rushdie_261.txt",0.154867256637168
+"1097","Midnight's Children - Salman Rushdie_263.txt",0.124
+"1098","Midnight's Children - Salman Rushdie_264.txt",0.172794117647059
+"1099","Midnight's Children - Salman Rushdie_265.txt",0.151162790697674
+"1101","Midnight's Children - Salman Rushdie_267.txt",0.205645161290323
+"1104","Midnight's Children - Salman Rushdie_270.txt",0.15530303030303
+"1107","Midnight's Children - Salman Rushdie_273.txt",0.147321428571429
+"1109","Midnight's Children - Salman Rushdie_275.txt",0.114814814814815
+"1114","Midnight's Children - Salman Rushdie_280.txt",0.15546218487395
+"1117","Midnight's Children - Salman Rushdie_283.txt",0.138655462184874
+"1120","Midnight's Children - Salman Rushdie_286.txt",0.111538461538462
+"1121","Midnight's Children - Salman Rushdie_287.txt",0.121848739495798
+"1124","Midnight's Children - Salman Rushdie_290.txt",0.144859813084112
+"1129","Midnight's Children - Salman Rushdie_295.txt",0.207317073170732
+"1137","Midnight's Children - Salman Rushdie_303.txt",0.15
+"1142","Midnight's Children - Salman Rushdie_308.txt",0.137755102040816
+"1146","Midnight's Children - Salman Rushdie_312.txt",0.200819672131148
+"1147","Midnight's Children - Salman Rushdie_313.txt",0.148351648351648
+"1148","Midnight's Children - Salman Rushdie_314.txt",0.140776699029126
+"1151","Midnight's Children - Salman Rushdie_317.txt",0.165178571428571
+"1162","Midnight's Children - Salman Rushdie_328.txt",0.1125
+"1163","Midnight's Children - Salman Rushdie_329.txt",0.123931623931624
+"1164","Midnight's Children - Salman Rushdie_330.txt",0.154205607476636
+"1175","Midnight's Children - Salman Rushdie_341.txt",0.133587786259542
+"1190","Midnight's Children - Salman Rushdie_356.txt",0.136029411764706
+"1197","Midnight's Children - Salman Rushdie_363.txt",0.117391304347826
+"1201","Midnight's Children - Salman Rushdie_367.txt",0.136363636363636
+"1214","Midnight's Children - Salman Rushdie_380.txt",0.229838709677419
+"1224","Midnight's Children - Salman Rushdie_390.txt",0.140909090909091
+"1228","Midnight's Children - Salman Rushdie_394.txt",0.161654135338346
+"1229","Midnight's Children - Salman Rushdie_395.txt",0.154867256637168
+"1231","Midnight's Children - Salman Rushdie_397.txt",0.138655462184874
+"1234","Midnight's Children - Salman Rushdie_400.txt",0.116379310344828
+"1242","Midnight's Children - Salman Rushdie_408.txt",0.154867256637168
+"1243","Midnight's Children - Salman Rushdie_409.txt",0.126086956521739
+"1245","Midnight's Children - Salman Rushdie_411.txt",0.116541353383459
+"1248","Midnight's Children - Salman Rushdie_414.txt",0.121621621621622
+"1252","Midnight's Children - Salman Rushdie_418.txt",0.156779661016949
+"1254","Midnight's Children - Salman Rushdie_420.txt",0.120535714285714
+"1255","Midnight's Children - Salman Rushdie_421.txt",0.14622641509434
+"1256","Midnight's Children - Salman Rushdie_422.txt",0.113445378151261
+"1265","Midnight's Children - Salman Rushdie_431.txt",0.140151515151515
+"1266","Midnight's Children - Salman Rushdie_432.txt",0.130630630630631
+"1270","Midnight's Children - Salman Rushdie_436.txt",0.155
+"1343","Milkman - Anna Burns_073.txt",0.132142857142857
+"1368","Milkman - Anna Burns_098.txt",0.132575757575758
+"1379","Milkman - Anna Burns_109.txt",0.111570247933884
+"1464","Milkman - Anna Burns_194.txt",0.117924528301887
+"1512","Milkman - Anna Burns_242.txt",0.128676470588235
+"1514","Milkman - Anna Burns_244.txt",0.117857142857143
+"1530","Narrow Road to the Deep North, The - Flanagan, Richard_003.txt",0.120833333333333
+"1733","Narrow Road to the Deep North, The - Flanagan, Richard_206.txt",0.126016260162602
+"1747","Narrow Road to the Deep North, The - Flanagan, Richard_220.txt",0.125
+"1749","Narrow Road to the Deep North, The - Flanagan, Richard_222.txt",0.119354838709677
+"1797","Sellout, The - Paul Beatty_025.txt",0.111570247933884
+"1801","Sellout, The - Paul Beatty_029.txt",0.12015503875969
+"1951","Testaments, The - Margaret Atwood_010.txt",0.156934306569343
+"2031","Testaments, The - Margaret Atwood_090.txt",0.126016260162602
+"2117","Testaments, The - Margaret Atwood_176.txt",0.172794117647059
+"2125","Testaments, The - Margaret Atwood_184.txt",0.110526315789474
+"2156","Testaments, The - Margaret Atwood_215.txt",0.118556701030928

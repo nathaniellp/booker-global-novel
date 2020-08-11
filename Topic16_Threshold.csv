@@ -1,56 +1,154 @@
 "","row.names.topic_doc_probs.","topic_doc_probs...topic.no."
-"24","Brief History of Seven Killings, A - Marlon James_024.txt",0.130573248407643
-"229","Brief History of Seven Killings, A - Marlon James_229.txt",0.123333333333333
-"359","Brief History of Seven Killings, A - Marlon James_359.txt",0.111486486486486
-"583","Girl, Woman, Other - Bernardine Evaristo_097.txt",0.139830508474576
-"615","Girl, Woman, Other - Bernardine Evaristo_129.txt",0.121621621621622
-"638","Girl, Woman, Other - Bernardine Evaristo_152.txt",0.121848739495798
-"698","Girl, Woman, Other - Bernardine Evaristo_212.txt",0.16304347826087
-"780","Lincoln in the Bardo - George Saunders_067.txt",0.122881355932203
-"789","Lincoln in the Bardo - George Saunders_076.txt",0.148305084745763
-"791","Lincoln in the Bardo - George Saunders_078.txt",0.205223880597015
-"792","Lincoln in the Bardo - George Saunders_079.txt",0.144628099173554
-"809","Lincoln in the Bardo - George Saunders_096.txt",0.125
-"831","Lincoln in the Bardo - George Saunders_118.txt",0.119834710743802
-"839","Midnight's Children - Salman Rushdie_005.txt",0.117391304347826
-"1277","Milkman - Anna Burns_007.txt",0.115079365079365
-"1313","Milkman - Anna Burns_043.txt",0.138392857142857
-"1388","Milkman - Anna Burns_118.txt",0.119834710743802
-"1396","Milkman - Anna Burns_126.txt",0.148854961832061
-"1400","Milkman - Anna Burns_130.txt",0.13671875
-"1402","Milkman - Anna Burns_132.txt",0.142241379310345
-"1434","Milkman - Anna Burns_164.txt",0.130952380952381
-"1499","Milkman - Anna Burns_229.txt",0.123853211009174
-"1515","Milkman - Anna Burns_245.txt",0.116379310344828
-"1539","Narrow Road to the Deep North, The - Flanagan, Richard_012.txt",0.170454545454545
-"1540","Narrow Road to the Deep North, The - Flanagan, Richard_013.txt",0.113861386138614
-"1554","Narrow Road to the Deep North, The - Flanagan, Richard_027.txt",0.128318584070796
-"1607","Narrow Road to the Deep North, The - Flanagan, Richard_080.txt",0.133064516129032
-"1656","Narrow Road to the Deep North, The - Flanagan, Richard_129.txt",0.157657657657658
-"1675","Narrow Road to the Deep North, The - Flanagan, Richard_148.txt",0.130597014925373
-"1679","Narrow Road to the Deep North, The - Flanagan, Richard_152.txt",0.161870503597122
-"1680","Narrow Road to the Deep North, The - Flanagan, Richard_153.txt",0.121848739495798
-"1682","Narrow Road to the Deep North, The - Flanagan, Richard_155.txt",0.135036496350365
-"1687","Narrow Road to the Deep North, The - Flanagan, Richard_160.txt",0.15234375
-"1690","Narrow Road to the Deep North, The - Flanagan, Richard_163.txt",0.110576923076923
-"1703","Narrow Road to the Deep North, The - Flanagan, Richard_176.txt",0.127049180327869
-"1713","Narrow Road to the Deep North, The - Flanagan, Richard_186.txt",0.110687022900763
-"1733","Narrow Road to the Deep North, The - Flanagan, Richard_206.txt",0.126016260162602
-"1737","Narrow Road to the Deep North, The - Flanagan, Richard_210.txt",0.110655737704918
-"1741","Narrow Road to the Deep North, The - Flanagan, Richard_214.txt",0.139830508474576
-"1836","Sellout, The - Paul Beatty_064.txt",0.118421052631579
-"1902","Sellout, The - Paul Beatty_130.txt",0.112403100775194
-"1949","Testaments, The - Margaret Atwood_008.txt",0.126923076923077
-"1959","Testaments, The - Margaret Atwood_018.txt",0.117391304347826
-"1997","Testaments, The - Margaret Atwood_056.txt",0.135761589403974
-"2016","Testaments, The - Margaret Atwood_075.txt",0.112612612612613
-"2030","Testaments, The - Margaret Atwood_089.txt",0.125
-"2037","Testaments, The - Margaret Atwood_096.txt",0.160550458715596
-"2057","Testaments, The - Margaret Atwood_116.txt",0.110576923076923
-"2061","Testaments, The - Margaret Atwood_120.txt",0.111570247933884
-"2063","Testaments, The - Margaret Atwood_122.txt",0.127906976744186
-"2069","Testaments, The - Margaret Atwood_128.txt",0.12890625
-"2077","Testaments, The - Margaret Atwood_136.txt",0.1375
-"2108","Testaments, The - Margaret Atwood_167.txt",0.155913978494624
-"2117","Testaments, The - Margaret Atwood_176.txt",0.113970588235294
-"2119","Testaments, The - Margaret Atwood_178.txt",0.11328125
+"7","Brief History of Seven Killings, A - Marlon James_007.txt",0.205202312138728
+"9","Brief History of Seven Killings, A - Marlon James_009.txt",0.12037037037037
+"10","Brief History of Seven Killings, A - Marlon James_010.txt",0.185279187817259
+"12","Brief History of Seven Killings, A - Marlon James_012.txt",0.271428571428571
+"19","Brief History of Seven Killings, A - Marlon James_019.txt",0.117021276595745
+"20","Brief History of Seven Killings, A - Marlon James_020.txt",0.167721518987342
+"21","Brief History of Seven Killings, A - Marlon James_021.txt",0.191428571428571
+"22","Brief History of Seven Killings, A - Marlon James_022.txt",0.18956043956044
+"27","Brief History of Seven Killings, A - Marlon James_027.txt",0.126470588235294
+"28","Brief History of Seven Killings, A - Marlon James_028.txt",0.175862068965517
+"29","Brief History of Seven Killings, A - Marlon James_029.txt",0.144295302013423
+"30","Brief History of Seven Killings, A - Marlon James_030.txt",0.115671641791045
+"31","Brief History of Seven Killings, A - Marlon James_031.txt",0.144230769230769
+"32","Brief History of Seven Killings, A - Marlon James_032.txt",0.178571428571429
+"33","Brief History of Seven Killings, A - Marlon James_033.txt",0.13905325443787
+"34","Brief History of Seven Killings, A - Marlon James_034.txt",0.137426900584795
+"35","Brief History of Seven Killings, A - Marlon James_035.txt",0.165697674418605
+"36","Brief History of Seven Killings, A - Marlon James_036.txt",0.144230769230769
+"37","Brief History of Seven Killings, A - Marlon James_037.txt",0.13
+"43","Brief History of Seven Killings, A - Marlon James_043.txt",0.173202614379085
+"44","Brief History of Seven Killings, A - Marlon James_044.txt",0.210365853658537
+"45","Brief History of Seven Killings, A - Marlon James_045.txt",0.136363636363636
+"46","Brief History of Seven Killings, A - Marlon James_046.txt",0.184659090909091
+"47","Brief History of Seven Killings, A - Marlon James_047.txt",0.137820512820513
+"48","Brief History of Seven Killings, A - Marlon James_048.txt",0.133116883116883
+"53","Brief History of Seven Killings, A - Marlon James_053.txt",0.147798742138365
+"54","Brief History of Seven Killings, A - Marlon James_054.txt",0.161184210526316
+"55","Brief History of Seven Killings, A - Marlon James_055.txt",0.219879518072289
+"56","Brief History of Seven Killings, A - Marlon James_056.txt",0.177325581395349
+"57","Brief History of Seven Killings, A - Marlon James_057.txt",0.136627906976744
+"58","Brief History of Seven Killings, A - Marlon James_058.txt",0.1875
+"61","Brief History of Seven Killings, A - Marlon James_061.txt",0.205882352941176
+"63","Brief History of Seven Killings, A - Marlon James_063.txt",0.174342105263158
+"64","Brief History of Seven Killings, A - Marlon James_064.txt",0.14804469273743
+"71","Brief History of Seven Killings, A - Marlon James_071.txt",0.175925925925926
+"72","Brief History of Seven Killings, A - Marlon James_072.txt",0.165625
+"86","Brief History of Seven Killings, A - Marlon James_086.txt",0.194656488549618
+"87","Brief History of Seven Killings, A - Marlon James_087.txt",0.116766467065868
+"98","Brief History of Seven Killings, A - Marlon James_098.txt",0.144970414201183
+"99","Brief History of Seven Killings, A - Marlon James_099.txt",0.178362573099415
+"101","Brief History of Seven Killings, A - Marlon James_101.txt",0.114525139664804
+"102","Brief History of Seven Killings, A - Marlon James_102.txt",0.189265536723164
+"103","Brief History of Seven Killings, A - Marlon James_103.txt",0.124242424242424
+"112","Brief History of Seven Killings, A - Marlon James_112.txt",0.164670658682635
+"114","Brief History of Seven Killings, A - Marlon James_114.txt",0.136075949367089
+"121","Brief History of Seven Killings, A - Marlon James_121.txt",0.116766467065868
+"134","Brief History of Seven Killings, A - Marlon James_134.txt",0.117857142857143
+"137","Brief History of Seven Killings, A - Marlon James_137.txt",0.138297872340426
+"168","Brief History of Seven Killings, A - Marlon James_168.txt",0.166666666666667
+"169","Brief History of Seven Killings, A - Marlon James_169.txt",0.198369565217391
+"170","Brief History of Seven Killings, A - Marlon James_170.txt",0.173469387755102
+"171","Brief History of Seven Killings, A - Marlon James_171.txt",0.153061224489796
+"172","Brief History of Seven Killings, A - Marlon James_172.txt",0.160891089108911
+"173","Brief History of Seven Killings, A - Marlon James_173.txt",0.120512820512821
+"177","Brief History of Seven Killings, A - Marlon James_177.txt",0.149122807017544
+"179","Brief History of Seven Killings, A - Marlon James_179.txt",0.135057471264368
+"187","Brief History of Seven Killings, A - Marlon James_187.txt",0.110759493670886
+"188","Brief History of Seven Killings, A - Marlon James_188.txt",0.172514619883041
+"189","Brief History of Seven Killings, A - Marlon James_189.txt",0.159574468085106
+"198","Brief History of Seven Killings, A - Marlon James_198.txt",0.147058823529412
+"207","Brief History of Seven Killings, A - Marlon James_207.txt",0.125806451612903
+"220","Brief History of Seven Killings, A - Marlon James_220.txt",0.11890243902439
+"239","Brief History of Seven Killings, A - Marlon James_239.txt",0.201863354037267
+"241","Brief History of Seven Killings, A - Marlon James_241.txt",0.195652173913043
+"243","Brief History of Seven Killings, A - Marlon James_243.txt",0.144171779141104
+"244","Brief History of Seven Killings, A - Marlon James_244.txt",0.177325581395349
+"245","Brief History of Seven Killings, A - Marlon James_245.txt",0.17
+"246","Brief History of Seven Killings, A - Marlon James_246.txt",0.111486486486486
+"247","Brief History of Seven Killings, A - Marlon James_247.txt",0.160377358490566
+"248","Brief History of Seven Killings, A - Marlon James_248.txt",0.175
+"249","Brief History of Seven Killings, A - Marlon James_249.txt",0.13719512195122
+"252","Brief History of Seven Killings, A - Marlon James_252.txt",0.124161073825503
+"253","Brief History of Seven Killings, A - Marlon James_253.txt",0.139455782312925
+"254","Brief History of Seven Killings, A - Marlon James_254.txt",0.168711656441718
+"255","Brief History of Seven Killings, A - Marlon James_255.txt",0.203571428571429
+"257","Brief History of Seven Killings, A - Marlon James_257.txt",0.242138364779874
+"258","Brief History of Seven Killings, A - Marlon James_258.txt",0.176666666666667
+"259","Brief History of Seven Killings, A - Marlon James_259.txt",0.219444444444444
+"260","Brief History of Seven Killings, A - Marlon James_260.txt",0.196774193548387
+"261","Brief History of Seven Killings, A - Marlon James_261.txt",0.144230769230769
+"262","Brief History of Seven Killings, A - Marlon James_262.txt",0.225308641975309
+"266","Brief History of Seven Killings, A - Marlon James_266.txt",0.128289473684211
+"273","Brief History of Seven Killings, A - Marlon James_273.txt",0.137820512820513
+"279","Brief History of Seven Killings, A - Marlon James_279.txt",0.147260273972603
+"283","Brief History of Seven Killings, A - Marlon James_283.txt",0.114906832298137
+"286","Brief History of Seven Killings, A - Marlon James_286.txt",0.142441860465116
+"287","Brief History of Seven Killings, A - Marlon James_287.txt",0.187898089171975
+"293","Brief History of Seven Killings, A - Marlon James_293.txt",0.154088050314465
+"295","Brief History of Seven Killings, A - Marlon James_295.txt",0.141618497109827
+"296","Brief History of Seven Killings, A - Marlon James_296.txt",0.186781609195402
+"298","Brief History of Seven Killings, A - Marlon James_298.txt",0.11144578313253
+"299","Brief History of Seven Killings, A - Marlon James_299.txt",0.125
+"304","Brief History of Seven Killings, A - Marlon James_304.txt",0.138888888888889
+"308","Brief History of Seven Killings, A - Marlon James_308.txt",0.127329192546584
+"312","Brief History of Seven Killings, A - Marlon James_312.txt",0.121875
+"314","Brief History of Seven Killings, A - Marlon James_314.txt",0.164670658682635
+"315","Brief History of Seven Killings, A - Marlon James_315.txt",0.127118644067797
+"316","Brief History of Seven Killings, A - Marlon James_316.txt",0.158959537572254
+"329","Brief History of Seven Killings, A - Marlon James_329.txt",0.114035087719298
+"330","Brief History of Seven Killings, A - Marlon James_330.txt",0.134730538922156
+"335","Brief History of Seven Killings, A - Marlon James_335.txt",0.118181818181818
+"336","Brief History of Seven Killings, A - Marlon James_336.txt",0.136627906976744
+"337","Brief History of Seven Killings, A - Marlon James_337.txt",0.170289855072464
+"343","Brief History of Seven Killings, A - Marlon James_343.txt",0.146551724137931
+"344","Brief History of Seven Killings, A - Marlon James_344.txt",0.14804469273743
+"345","Brief History of Seven Killings, A - Marlon James_345.txt",0.148484848484848
+"346","Brief History of Seven Killings, A - Marlon James_346.txt",0.143979057591623
+"348","Brief History of Seven Killings, A - Marlon James_348.txt",0.239393939393939
+"349","Brief History of Seven Killings, A - Marlon James_349.txt",0.1875
+"350","Brief History of Seven Killings, A - Marlon James_350.txt",0.21523178807947
+"357","Brief History of Seven Killings, A - Marlon James_357.txt",0.11231884057971
+"361","Brief History of Seven Killings, A - Marlon James_361.txt",0.124277456647399
+"362","Brief History of Seven Killings, A - Marlon James_362.txt",0.120588235294118
+"367","Brief History of Seven Killings, A - Marlon James_367.txt",0.21474358974359
+"368","Brief History of Seven Killings, A - Marlon James_368.txt",0.12012987012987
+"373","Brief History of Seven Killings, A - Marlon James_373.txt",0.139344262295082
+"374","Brief History of Seven Killings, A - Marlon James_374.txt",0.118131868131868
+"375","Brief History of Seven Killings, A - Marlon James_375.txt",0.131901840490798
+"376","Brief History of Seven Killings, A - Marlon James_376.txt",0.188953488372093
+"377","Brief History of Seven Killings, A - Marlon James_377.txt",0.167682926829268
+"394","Brief History of Seven Killings, A - Marlon James_394.txt",0.110795454545455
+"395","Brief History of Seven Killings, A - Marlon James_395.txt",0.205056179775281
+"396","Brief History of Seven Killings, A - Marlon James_396.txt",0.115168539325843
+"398","Brief History of Seven Killings, A - Marlon James_398.txt",0.150306748466258
+"399","Brief History of Seven Killings, A - Marlon James_399.txt",0.134868421052632
+"400","Brief History of Seven Killings, A - Marlon James_400.txt",0.114906832298137
+"401","Brief History of Seven Killings, A - Marlon James_401.txt",0.152597402597403
+"414","Brief History of Seven Killings, A - Marlon James_414.txt",0.146551724137931
+"415","Brief History of Seven Killings, A - Marlon James_415.txt",0.150887573964497
+"417","Brief History of Seven Killings, A - Marlon James_417.txt",0.151612903225806
+"418","Brief History of Seven Killings, A - Marlon James_418.txt",0.115384615384615
+"419","Brief History of Seven Killings, A - Marlon James_419.txt",0.158064516129032
+"426","Brief History of Seven Killings, A - Marlon James_426.txt",0.142441860465116
+"445","Brief History of Seven Killings, A - Marlon James_445.txt",0.135220125786164
+"446","Brief History of Seven Killings, A - Marlon James_446.txt",0.126470588235294
+"447","Brief History of Seven Killings, A - Marlon James_447.txt",0.133136094674556
+"450","Brief History of Seven Killings, A - Marlon James_450.txt",0.125
+"453","Brief History of Seven Killings, A - Marlon James_453.txt",0.114705882352941
+"454","Brief History of Seven Killings, A - Marlon James_454.txt",0.11878453038674
+"455","Brief History of Seven Killings, A - Marlon James_455.txt",0.127840909090909
+"460","Brief History of Seven Killings, A - Marlon James_460.txt",0.116477272727273
+"463","Brief History of Seven Killings, A - Marlon James_463.txt",0.153614457831325
+"464","Brief History of Seven Killings, A - Marlon James_464.txt",0.131578947368421
+"477","Brief History of Seven Killings, A - Marlon James_477.txt",0.111428571428571
+"480","Brief History of Seven Killings, A - Marlon James_480.txt",0.110759493670886
+"728","Lincoln in the Bardo - George Saunders_015.txt",0.136363636363636
+"729","Lincoln in the Bardo - George Saunders_016.txt",0.125
+"817","Lincoln in the Bardo - George Saunders_104.txt",0.115384615384615
+"964","Midnight's Children - Salman Rushdie_130.txt",0.125
+"1009","Midnight's Children - Salman Rushdie_175.txt",0.114173228346457
+"1082","Midnight's Children - Salman Rushdie_248.txt",0.113636363636364
+"1161","Midnight's Children - Salman Rushdie_327.txt",0.126712328767123
+"1452","Milkman - Anna Burns_182.txt",0.113970588235294
